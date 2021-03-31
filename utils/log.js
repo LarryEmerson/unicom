@@ -1,6 +1,8 @@
 const util = require('util')
 const axios = require('axios');
 const fs = require('fs-extra');
+const crypto = require('crypto');
+
 var transParams = (data) => {
     let params = new URLSearchParams();
     for (let item in data) {
@@ -99,8 +101,14 @@ var notify = {
     dingtalk_send: async (desp) => {
         if (desp.length) {
             console.log('使用dingtalk机器人推送消息')
+            let ddToken = process.env.notify_dingtalk_token
+            let ddSecret = process.env.notify_dingtalk_secret
+            const dateNow = Date.now();
+            const hmac = crypto.createHmac('sha256', ddSecret);
+            hmac.update(`${dateNow}\n${ddSecret}`);
+            const result = encodeURIComponent(hmac.digest('base64'));
             await axios({
-                url: `https://oapi.dingtalk.com/robot/send?access_token=${process.env.notify_dingtalk_token}`,
+                url: `https://oapi.dingtalk.com/robot/send?access_token=${process.env.notify_dingtalk_token}&timestamp=${dateNow}&sign=${result}`,
                 method: 'post',
                 data: {
                     "msgtype": "text",
@@ -183,7 +191,7 @@ var notify = {
         if (process.env.notify_tele_bottoken && process.env.notify_tele_chatid) {
             notify.tele_send(notify.buildMsg())
         }
-        if (process.env.notify_dingtalk_token) {
+        if (process.env.notify_dingtalk_token && process.env.notify_dingtalk_secret) {
             notify.dingtalk_send(notify.buildMsg())
         }
         if (process.env.notify_pushplus_token) {
