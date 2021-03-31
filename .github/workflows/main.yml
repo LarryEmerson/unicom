@@ -80,8 +80,16 @@ jobs:
         password: ${{secrets.unicom_password}}
         appid: ${{secrets.unicom_appid}}
         notify_sctkey: ${{secrets.NOTIFY_SCKEY}}
-#      run: node index.js unicom --user=${user} --password=${password} --appid=${appid}
-        config: ${{secrets.config}}
-        run: |
-          echo "$config" > ./config.json
-          node index.js unicom --config config.json
+        run: node index.js unicom --user=${user} --password=${password} --appid=${appid}
+
+    - name: Run User2
+      env:
+        user2: ${{secrets.unicom_user2}}
+        password2: ${{secrets.unicom_password2}}
+        appid: ${{secrets.unicom_appid}}
+        notify_sctkey: ${{secrets.NOTIFY_SCKEY}}
+        run: node index.js unicom --user=${user2} --password=${password2} --appid=${appid}
+#        config: ${{secrets.config}}
+#        run: |
+#          echo "$config" > ./config.json
+#          node index.js unicom --config config.json
