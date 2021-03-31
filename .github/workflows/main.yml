@@ -1,6 +1,5 @@
 name: 联通挂机任务积分脚本
 
-
 on:
 
   push: # push触发
@@ -10,12 +9,9 @@ on:
     #- cron: '*/30 20-23,0-15 * * *' # cron表达式，Actions时区是UTC时间，所以要往前推8个小时(4-23)
     - cron: '0 */3 * * *'
 
-
 jobs:
   daily-task:
     if: github.event.repository.owner.id == github.event.sender.id
-
-
 
     runs-on: ubuntu-latest
 
@@ -91,4 +87,4 @@ jobs:
         password: ${{secrets.unicom_password}}
         appid: ${{secrets.unicom_appid}}
         notify_sctkey: ${{secrets.NOTIFY_SCKEY}}
-      run: node index.js unicom --user=${user} --password=${password} --appid=${appid} 
+      run: node index.js unicom --user=${user} --password=${password} --appid=${appid}

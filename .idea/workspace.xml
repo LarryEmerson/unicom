@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f07dd6a5-b17c-4432-9f86-8e8ac6b8fcf6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/多号签到.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/多号签到.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1617174272623</updated>
-      <workItem from="1617174273689" duration="5030000" />
+      <workItem from="1617174273689" duration="5844000" />
     </task>
     <servers />
   </component>
