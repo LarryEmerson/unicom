@@ -230,7 +230,7 @@ let scheduler = {
         const { taskKey, tryrun, tasks: selectedTasks } = params
         scheduler.clean()
         scheduler.isTryRun = tryrun
-        scheduler.taskKey = taskKey || 'default'
+        scheduler.taskKey = ''+taskKey || 'default'
         if (scheduler.isTryRun) {
             console.info('!!!当前运行在TryRun模式，仅建议在测试时运行!!!')
             await new Promise((resolve) => setTimeout(resolve, 300))
