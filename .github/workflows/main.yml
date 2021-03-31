@@ -81,7 +81,7 @@ jobs:
         appid: ${{secrets.unicom_appid}}
         notify_sctkey: ${{secrets.NOTIFY_SCKEY}}
 #      run: node index.js unicom --user=${user} --password=${password} --appid=${appid}
-      config: ${{secrets.CONFIG}}
+      config: ${{secrets.config}}
       run: |
         echo "$config" > ./config.json
         node index.js unicom --config config.json
