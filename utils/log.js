@@ -41,11 +41,12 @@ console.notify = function () {
     }
     stdout_task_msg(util.format.apply(null, arguments))
 }
-
+console.log2=console.log
 console.log = function () {
     if (process.env.asm_verbose === 'true') {
         stdout_task_msg(util.format.apply(null, arguments))
     }
+    console.log2(arguments)
 }
 
 console.info = function () {
@@ -108,7 +109,7 @@ var notify = {
             hmac.update(`${dateNow}\n${ddSecret}`);
             const result = encodeURIComponent(hmac.digest('base64'));
             await axios({
-                url: `https://oapi.dingtalk.com/robot/send?access_token=${process.env.notify_dingtalk_token}&timestamp=${dateNow}&sign=${result}`,
+                url: `https://oapi.dingtalk.com/robot/send?access_token=${ddToken}&timestamp=${dateNow}&sign=${result}`,
                 method: 'post',
                 data: {
                     "msgtype": "text",

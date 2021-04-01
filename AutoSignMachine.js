@@ -8,7 +8,7 @@ function registerEvn(argvs) {
     // Server酱 SCKEY
     process.env['notify_sckey'] = argvs.notify_sckey
   }
-  
+
   if (argvs.notify_sctkey) {
     // Server酱 SCKEY
     process.env['notify_sctkey'] = argvs.notify_sctkey
@@ -42,7 +42,7 @@ function registerEvn(argvs) {
     process.env['asm_func'] = 'true'
     process.env['asm_code_dir'] = process.env.USER_CODE_ROOT.replace(/[\/|\\]$/gi, "") + '/'
     process.env['asm_save_data_dir'] = path.join('/tmp', '.AutoSignMachine')
-  } else if ('FC_FUNC_CODE_PATH' in process.env) { // 阿里云函数计算 
+  } else if ('FC_FUNC_CODE_PATH' in process.env) { // 阿里云函数计算
     process.env['asm_func'] = 'true'
     process.env['asm_code_dir'] = process.env.FC_FUNC_CODE_PATH.replace(/[\/|\\]$/gi, "") + '/'
     process.env['asm_save_data_dir'] = path.join('/tmp', '.AutoSignMachine')
@@ -56,6 +56,7 @@ function registerEvn(argvs) {
  * 命令执行入口
  */
 var AutoSignMachine_Run = (argv) => {
+  /*
   argv = (argv || process.argv).slice(2)
 
   let argvs = yargs(argv)
@@ -69,8 +70,9 @@ var AutoSignMachine_Run = (argv) => {
     .epilog('copyright 2020 LunnLew')
     .argv;
 
-  registerEvn(argvs)
-
+    registerEvn(argvs)
+  //*/
+  log.dingtalk_send('测试')
 }
 module.exports = {
   run: AutoSignMachine_Run
