@@ -188,15 +188,15 @@ var dailyBookAnswer = {
             ...options,
             searchParams,
             accessToken
-        })
+        })||{}
         if (!answer || answer.sal_answer_status === '0') {
             await dailyBookAnswer.answer(axios, {
                 ...options,
                 searchParams,
                 accessToken,
-                actId: today.sq_act_id,
-                questionId: today.sq_id,
-                answerId: today.sq_answer
+                actId: today.sq_act_id||'',
+                questionId: today.sq_id||'',
+                answerId: today.sq_answer||''
             })
             let { answer: useanswer, round } = await dailyBookAnswer.userActInfo(axios, {
                 ...options,

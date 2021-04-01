@@ -123,8 +123,8 @@ var dailyShop = {
                 encryptmobile
             })
         } while (--n > 0)
-    }
     //增加修改:屏蔽积分抽奖
     */
+    }
 }
 module.exports = dailyShop

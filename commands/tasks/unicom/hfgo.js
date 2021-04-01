@@ -1,4 +1,4 @@
-const { buildUnicomUserAgent, appInfo } = require('../../../utils/device')
+const {buildUnicomUserAgent, appInfo} = require('../../../utils/device')
 var moment = require('moment');
 var transParams = (data) => {
     let params = new URLSearchParams();
@@ -31,24 +31,28 @@ var hfgo = {
                 return data
             }
         }).catch(err => console.error(err))
-        let jar = result.config.jar
-        let cookiesJson = jar.toJSON()
-        let ecs_token = cookiesJson.cookies.find(i => i.key == 'ecs_token')
-        ecs_token = ecs_token.value
-        if (!ecs_token) {
-            throw new Error('ecs_token缺失')
-        }
-        return {
-            jar,
-            ecs_token,
-            searchParams
+        if (result) {
+            let jar = result.config.jar
+            let cookiesJson = jar.toJSON()
+            let ecs_token = cookiesJson.cookies.find(i => i.key == 'ecs_token')
+            ecs_token = ecs_token.value
+            if (!ecs_token) {
+                throw new Error('ecs_token缺失')
+            }
+            return {
+                jar,
+                ecs_token,
+                searchParams
+            }
+        } else {
+            return null
         }
     },
     login: async (axios, options) => {
-        const { searchParams, jar } = options
+        const {searchParams, jar} = options
         const useragent = buildUnicomUserAgent(options, 'p')
         let timestamp = moment().format('YYYYMMDDHHmmss')
-        let { config } = await axios.request({
+        let {config} = await axios.request({
             headers: {
                 "user-agent": useragent,
             },
@@ -61,9 +65,9 @@ var hfgo = {
         }
     },
     toSignPage: async (axios, options) => {
-        const { searchParams, jar, token } = options
+        const {searchParams, jar, token} = options
         const useragent = buildUnicomUserAgent(options, 'p')
-        let { data, config } = await axios.request({
+        let {data, config} = await axios.request({
             headers: {
                 "user-agent": useragent,
             },
@@ -80,9 +84,9 @@ var hfgo = {
         }
     },
     actUserSign: async (axios, options) => {
-        const { searchParams, jar } = options
+        const {searchParams, jar} = options
         const useragent = buildUnicomUserAgent(options, 'p')
-        let { data } = await axios.request({
+        let {data} = await axios.request({
             headers: {
                 "user-agent": useragent,
                 "referer": "https://atp.bol.wo.cn/atpsign/ACT202012221038331042965g65tNa?product=hfgo",
@@ -98,9 +102,9 @@ var hfgo = {
         }
     },
     isSign: async (axios, options) => {
-        const { searchParams, jar } = options
+        const {searchParams, jar} = options
         const useragent = buildUnicomUserAgent(options, 'p')
-        let { data } = await axios.request({
+        let {data} = await axios.request({
             headers: {
                 "user-agent": useragent,
                 "referer": "https://atp.bol.wo.cn/atpsign/ACT202012221038331042965g65tNa?product=hfgo",
@@ -116,9 +120,9 @@ var hfgo = {
         }
     },
     signState: async (axios, options) => {
-        const { searchParams, jar } = options
+        const {searchParams, jar} = options
         const useragent = buildUnicomUserAgent(options, 'p')
-        let { data } = await axios.request({
+        let {data} = await axios.request({
             headers: {
                 "user-agent": useragent,
                 "referer": "https://atp.bol.wo.cn/atpsign/ACT202012221038331042965g65tNa?product=hfgo",
@@ -135,9 +139,9 @@ var hfgo = {
         }
     },
     lotteryNum: async (axios, options) => {
-        const { searchParams, jar } = options
+        const {searchParams, jar} = options
         const useragent = buildUnicomUserAgent(options, 'p')
-        let { data } = await axios.request({
+        let {data} = await axios.request({
             headers: {
                 "user-agent": useragent,
                 "referer": "https://atp.bol.wo.cn/atpsign/ACT202012221038331042965g65tNa?product=hfgo",
@@ -154,9 +158,9 @@ var hfgo = {
         }
     },
     lottery: async (axios, options) => {
-        const { searchParams, jar } = options
+        const {searchParams, jar} = options
         const useragent = buildUnicomUserAgent(options, 'p')
-        let { data } = await axios.request({
+        let {data} = await axios.request({
             headers: {
                 "user-agent": useragent,
                 "referer": "https://atp.bol.wo.cn/atpsign/ACT202012221038331042965g65tNa?product=hfgo",
@@ -178,15 +182,15 @@ var hfgo = {
         }
     },
     doTask: async (axios, options) => {
-        let { jar, searchParams } = await hfgo.openPlatLine(axios, options)
-        let { jar: jar1 } = await hfgo.login(axios, {
+        let {jar, searchParams} = await hfgo.openPlatLine(axios, options)
+        let {jar: jar1} = await hfgo.login(axios, {
             ...options,
             searchParams,
             jar
         })
         let token = jar1.toJSON().cookies.find(i => i.key == 'token')
         token = token.value
-        let { jar: jar2 } = await hfgo.toSignPage(axios, {
+        let {jar: jar2} = await hfgo.toSignPage(axios, {
             ...options,
             jar: jar1,
             token

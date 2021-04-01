@@ -2,7 +2,7 @@ const util = require('util')
 const axios = require('axios');
 const fs = require('fs-extra');
 const crypto = require('crypto');
-
+let targetName=''
 var transParams = (data) => {
     let params = new URLSearchParams();
     for (let item in data) {
@@ -178,12 +178,14 @@ var notify = {
     buildMsg: () => {
         let msg = ''
         for (let taskName in notify_logs) {
-            msg += `**以下为${taskName}任务消息**\n\n`
+            let target=targetName||taskName
+            msg += `**以下为${target}任务消息**\n\n`
             msg += notify_logs[taskName].join('\n')
         }
         return msg
     },
-    sendLog: async () => {
+    sendLog: async (taskname) => {
+        targetName=taskname
         if (process.env.notify_sctkey) {
             notify.sct_send(notify.buildMsg())
         }

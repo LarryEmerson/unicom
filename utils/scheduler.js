@@ -376,7 +376,7 @@ let scheduler = {
                 })
             }
             await queue.onIdle()
-            await console.sendLog()
+            await console.sendLog(scheduler.taskKey)
         } else {
             console.info('暂无需要执行的任务')
         }

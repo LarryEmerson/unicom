@@ -2,7 +2,7 @@ const { encryptParamsV1, encryptParamsV2, encryptParamsV3, signRewardVideoParams
 const crypto = require('crypto');
 const { device, appInfo, buildUnicomUserAgent } = require('../../../utils/device')
 const { TryNextEvent } = require('../../../utils/EnumError')
-
+let result={}
 var dailyFingerSign = {
     openPlatLine: async (axios, options) => {
         const useragent = buildUnicomUserAgent(options, 'p')
@@ -123,8 +123,9 @@ var dailyFingerSign = {
             method: 'POST',
             data: params
         })
+        console.log('>>minusRondGames',data)
         return {
-            resultId: data.data?.roundGame?.roundId
+            resultId: data.data?data.data.roundGame?data.data.roundGame:data.data.roundId:''
         }
     },
     roundGameForPrize: async (axios, options) => {

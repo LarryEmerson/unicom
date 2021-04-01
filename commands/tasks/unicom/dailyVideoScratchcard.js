@@ -24,7 +24,7 @@ function encryption(data, key) {
   var cipherEncoding = 'base64';
   var cipher = crypto.createCipheriv('aes-128-ecb', key, iv);
   cipher.setAutoPadding(true);
-  return Buffer.concat([cipher.update(data), cipher.final()]).toString(cipherEncoding);
+  return Buffer.concat([''+cipher.update(data), ''+cipher.final()]).toString(cipherEncoding);
 }
 
 var dailyVideoScratchcard = {
@@ -138,7 +138,7 @@ var dailyVideoScratchcard = {
         if (result.data.code !== 200) {
           console.info(result.data.msg)
         } else {
-          console.reward('integral', result.data.data.prizeType ? result.data.data.integral : 0)
+          console.reward('积分', result.data.data.prizeType ? result.data.data.integral : 0)
           console.info('提交任务成功', `+${result.data.data.prizeType ? result.data.data.integral : 0}`)
         }
         console.info('等待15秒再继续')
