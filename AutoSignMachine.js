@@ -72,7 +72,7 @@ var AutoSignMachine_Run = (argv) => {
 
     registerEvn(argvs)
   //*/
-  log.dingtalk_send('测试')
+  log.dingtalk_send(new Date().toLocaleDateString())
 }
 module.exports = {
   run: AutoSignMachine_Run
