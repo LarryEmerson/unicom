@@ -101,9 +101,10 @@ console.reward = function () {
 var notify = {
     dingtalk_send: async (desp) => {
         if (desp.length) {
-            console.log('使用dingtalk机器人推送消息')
+            console.log('使用dingtalk机器人推送消息',process&&process.env)
             let ddToken = process.env.notify_dingtalk_token
             let ddSecret = process.env.notify_dingtalk_secret
+ 
             const dateNow = Date.now();
             const hmac = crypto.createHmac('sha256', ddSecret);
             hmac.update(`${dateNow}\n${ddSecret}`);
