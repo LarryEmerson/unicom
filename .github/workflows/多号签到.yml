@@ -77,4 +77,6 @@ jobs:
         password2: ${{secrets.unicom_password2}}
         appid: ${{secrets.unicom_appid}}
         notify_sctkey: ${{secrets.NOTIFY_SCKEY}}
+        notify_dingtalk_token: ${{secrets.notify_dingtalk_token}}
+        notify_dingtalk_secret: ${{secrets.notify_dingtalk_secret}}
       run: node index.js unicom --accountSn=1,2 --user-1=${user} --password-1=${password} --appid-1=${appid} --user-2=${user2} --password-2=${password2} --appid-2=${appid}

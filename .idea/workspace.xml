@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f07dd6a5-b17c-4432-9f86-8e8ac6b8fcf6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/多号签到.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/多号签到.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoSignMachine.js" beforeDir="false" afterPath="$PROJECT_DIR$/AutoSignMachine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/log.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +56,7 @@
       <updated>1617174272623</updated>
       <workItem from="1617174273689" duration="6737000" />
       <workItem from="1617243446058" duration="34000" />
-      <workItem from="1617243488155" duration="1760000" />
+      <workItem from="1617243488155" duration="2639000" />
     </task>
     <servers />
   </component>
@@ -94,9 +96,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1869" height="282" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1617243479561" />
-    <state x="675" y="264" width="596" height="536" key="find.popup" timestamp="1617244079939">
+    <state x="675" y="264" width="596" height="536" key="find.popup" timestamp="1617246210845">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="675" y="264" width="596" height="536" key="find.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1617246210845" />
     <state x="675" y="264" width="596" height="536" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1617244079939" />
   </component>
 </project>

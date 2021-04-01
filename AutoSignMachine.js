@@ -18,6 +18,10 @@ function registerEvn(argvs) {
     // dingtalk access_token
     process.env['notify_dingtalk_token'] = argvs.notify_dingtalk_token
   }
+  if (argvs.notify_dingtalk_secret) {
+    // dingtalk access_token
+    process.env['notify_dingtalk_secret'] = argvs.notify_dingtalk_secret
+  }
 
   // see https://api.telegram.org/bot[[argvs.notify_tele_bottoken]]/getUpdates
   // see @getuserID
