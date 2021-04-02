@@ -14,7 +14,7 @@ function encryption(data, key) {
     var cipherEncoding = 'base64';
     var cipher = crypto.createCipheriv('aes-128-ecb', key, iv);
     cipher.setAutoPadding(true);
-    return Buffer.concat([''+cipher.update(data),''+ cipher.final()]).toString(cipherEncoding);
+    return Buffer.concat([''+cipher.update(''+data),''+ cipher.final()]).toString(cipherEncoding);
 }
 function decryption(data, key) {
     var iv = "";
@@ -22,7 +22,7 @@ function decryption(data, key) {
     var cipherEncoding = 'base64';
     var decipher = crypto.createDecipheriv('aes-128-ecb', key, iv);
     decipher.setAutoPadding(true);
-    return Buffer.concat([decipher.update(data, cipherEncoding), decipher.final()]).toString(clearEncoding);
+    return Buffer.concat([decipher.update(''+data, cipherEncoding), decipher.final()]).toString(clearEncoding);
 }
 
 function w() {
