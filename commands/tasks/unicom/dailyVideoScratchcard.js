@@ -24,7 +24,7 @@ function encryption(data, key) {
   var cipherEncoding = 'base64';
   var cipher = crypto.createCipheriv('aes-128-ecb', key, iv);
   cipher.setAutoPadding(true);
-  return Buffer.concat([''+cipher.update(''+data), ''+cipher.final()]).toString(cipherEncoding);
+  return Buffer.concat([cipher.update(''+data), cipher.final()]).toString(cipherEncoding);
 }
 
 var dailyVideoScratchcard = {
