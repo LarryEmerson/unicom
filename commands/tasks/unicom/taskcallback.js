@@ -84,7 +84,7 @@ var taskcallback = {
         let media_extra = [
             ecs_token,
             options.user,
-            'iphone_c',
+            'android',
             params.arguments1,
             params.arguments2,
             orderId,// orderId
@@ -95,13 +95,13 @@ var taskcallback = {
 
         var data = {
             "oversea_version_type": 0,
-            "reward_name": `iphone_c-${params.remark1 || params.remark}-激励视频`,
+            "reward_name": `android-${params.remark1 || params.remark}-激励视频`,
             "reward_amount": 1,
             "network": 4,
             // "latitude": 26.611770629882812,
             // "longitude": 106.63581085205078,
             "sdk_version": "3.3.0.3",
-            "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148     unicom{version:iphone_c@8.0200}{systemVersion:dis}{yw_code:}",
+            "user_agent": "Mozilla\/5.0 (Linux; Android 9; VKY-AL00 Build\/HUAWEIVKY-AL00; wv) AppleWebKit\/537.36 (KHTML, like Gecko) Version\/4.0 Chrome\/86.0.4240.198 Mobile Safari\/537.36",
             "extra": {
                 // "ad_slot_type": 7,
                 // "oaid": "ebdde3b9-def7-6cc3-fdfe-9bfff7ce4126",
@@ -121,7 +121,7 @@ var taskcallback = {
                 // "mac": "10:44:00:73:74:BF",
                 // "uuid": "867442035025655",
                 // "uuid_md5": "8a4dac2481580bd94f8c4b17787b74cd",
-                // "os": "iphone_c",
+                // "os": "android",
                 // "client_ip": "111.121.67.62",
                 // "open_udid": "",
                 // "os_type": null,

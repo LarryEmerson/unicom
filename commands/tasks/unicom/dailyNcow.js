@@ -177,7 +177,7 @@ var dailyNcow = {
                     'type': '广告',
                     'integral': 10,
                     'orderId': params['orderId'],
-                    'phoneType': 'iphone_c',
+                    'phoneType': 'android',
                     'version': appInfo.version
                 }
                 advertTimes--

@@ -187,7 +187,7 @@ module.exports = {
                     'currentTimes': advertTimes,
                     'type': '广告',
                     'orderId': params['orderId'],
-                    'phoneType': 'iphone_c',
+                    'phoneType': 'android',
                     'version': appInfo.version
                 }
                 advertTimes--

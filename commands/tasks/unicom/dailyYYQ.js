@@ -220,7 +220,7 @@ var dailyYYQ = {
         activityId: activity.activityId,
         version: appInfo.version,
         orderId: '',
-        phoneType: 'iphone_c'
+        phoneType: 'android'
       }
 
       if (!freeTimes && advertTimes) {
@@ -233,7 +233,7 @@ var dailyYYQ = {
           activityId: activity.activityId,
           version: appInfo.version,
           orderId: params['orderId'],
-          phoneType: 'iphone_c'
+          phoneType: 'android'
         }
 
         await dailyYYQ.advertFreeGame(axios, {

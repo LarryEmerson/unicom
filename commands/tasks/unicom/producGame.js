@@ -222,7 +222,7 @@ var producGame = {
         const useragent = buildUnicomUserAgent(options, 'p')
         let params = {
             'methodType': 'popularGames',
-            'deviceType': 'iphone_c',
+            'deviceType': 'Android',
             'clientVersion': appInfo.version,
         }
         let { data, config } = await axios.request({
@@ -284,7 +284,7 @@ var producGame = {
         const useragent = buildUnicomUserAgent(options, 'p')
         let params = {
             'methodType': 'record',
-            'deviceType': 'iphone_c',
+            'deviceType': 'Android',
             'clientVersion': appInfo.version,
             'gameId': gameId,
             'taskId': ''
@@ -313,7 +313,7 @@ var producGame = {
             'videoIntegral': '0',
             'isVideo': 'Y',
             'clientVersion': appInfo.version,
-            'deviceType': 'iphone_c'
+            'deviceType': 'Android'
         }
         let { data, config } = await axios.request({
             headers: {
@@ -335,7 +335,7 @@ var producGame = {
         const useragent = buildUnicomUserAgent(options, 'p')
         let params = {
             'methodType': 'queryTaskCenter',
-            'deviceType': 'iphone_c',
+            'deviceType': 'Android',
             'clientVersion': appInfo.version
         }
         let { data, config } = await axios.request({
@@ -362,11 +362,11 @@ var producGame = {
         let { popularList: allgames, jar } = await producGame.popularGames(axios, options)
       let games = allgames
         console.info('剩余未完成game', games.length)
-        let queue = new PQueue({ concurrency: 1 });
+        let queue = new PQueue({ concurrency: 2 });
 
         let others = ['1110422106']
 
-        console.info('调度任务中', '并发数', 1)
+        console.info('调度任务中', '并发数', 2)
         for (let game of games) {
             queue.add(async () => {
                 console.info(game.name)
@@ -408,9 +408,9 @@ var producGame = {
         let { games, jar } = await producGame.getTaskList(axios, options)
         games = games.filter(d => d.task === '5' && d.reachState === '0' && d.task_type === 'duration')
         console.info('剩余未完成game', games.length)
-        let queue = new PQueue({ concurrency: 1 });
+        let queue = new PQueue({ concurrency: 2 });
 
-        console.info('调度任务中', '并发数', 1)
+        console.info('调度任务中', '并发数', 2)
         for (let game of games) {
             queue.add(async () => {
                 console.info(game.name)
@@ -463,7 +463,7 @@ var producGame = {
         const useragent = buildUnicomUserAgent(options, 'p')
         let params = {
             'methodType': 'timeTaskQuery',
-            'deviceType': 'iphone_c',
+            'deviceType': 'Android',
             'clientVersion': appInfo.version
         }
         let { data } = await axios.request({
@@ -491,7 +491,7 @@ var producGame = {
             'userNumber': options.user,
             'methodType': 'flowGet',
             'gameId': gameId,
-            'deviceType': 'iphone_c',
+            'deviceType': 'Android',
             'clientVersion': appInfo.version
         }
         let { data } = await axios.request({
@@ -522,7 +522,7 @@ var producGame = {
         let params = {
             'methodType': 'taskGetReward',
             'taskCenterId': taskCenterId,
-            'deviceType': 'iphone_c',
+            'deviceType': 'Android',
             'clientVersion': appInfo.version,
         }
         let { data } = await axios.request({

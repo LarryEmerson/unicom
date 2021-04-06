@@ -36,7 +36,7 @@ var gameYearBox = {
             data: transParams({
                 'methodType': 'games',
                 'clientVersion': appInfo.version,
-                'deviceType': 'iphone_c'
+                'deviceType': 'Android'
             })
         })
         return {
@@ -57,7 +57,7 @@ var gameYearBox = {
             data: transParams({
                 'methodType': 'query_box_info',
                 'clientVersion': appInfo.version,
-                'deviceType': 'iphone_c'
+                'deviceType': 'Android'
             })
         })
         if(data.code !== '0'){
@@ -79,7 +79,7 @@ var gameYearBox = {
             data: transParams({
                 'methodType': 'box_get_reward',
                 'clientVersion': appInfo.version,
-                'deviceType': 'iphone_c',
+                'deviceType': 'Android',
                 "boxFlag": options.boxFlag
             })
         })
