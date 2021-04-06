@@ -30,7 +30,7 @@ var dailyFingerSign = {
                 return data
             }
         }).catch(err => console.error(err))
-        let jar = result.config.jar
+        let jar = result&&result.config.jar||{}
 
         let cookiesJson = jar.toJSON()
         let ecs_token = cookiesJson.cookies.find(i => i.key == 'ecs_token')

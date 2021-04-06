@@ -41,12 +41,12 @@ console.notify = function () {
     }
     stdout_task_msg(util.format.apply(null, arguments))
 }
-console.log2=console.log
+// console.log2=console.log
 console.log = function () {
     if (process.env.asm_verbose === 'true') {
         stdout_task_msg(util.format.apply(null, arguments))
     }
-    console.log2(arguments)
+    // console.log2(arguments)
 }
 
 console.info = function () {

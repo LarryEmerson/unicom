@@ -203,7 +203,7 @@ var dailyBookAnswer = {
                 searchParams,
                 accessToken
             })
-            if (useanswer.sal_answer_status === '1') {
+            if (useanswer&&useanswer.sal_answer_status === '1') {
                 console.info('答题正确')
             } else {
                 console.error('答题错误')

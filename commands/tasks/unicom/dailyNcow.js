@@ -38,7 +38,7 @@ var dailyNcow = {
             throw new Error('ecs_token缺失')
         }
         let jfid = cookiesJson.cookies.find(i => i.key == '_jf_id')
-        jfid = jfid.value
+        jfid = jfid&&jfid.value||''
 
         return {
             jar,
