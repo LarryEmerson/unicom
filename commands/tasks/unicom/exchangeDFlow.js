@@ -274,7 +274,7 @@ var exchangeDFlow = {
         }
     },
     doTask: async (axios, options) => {
-        await exchangeDFlow.exchange(axios, options)
+        // await exchangeDFlow.exchange(axios, options)
     }
 }
 module.exports = exchangeDFlow
