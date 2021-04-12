@@ -60,7 +60,7 @@ function registerEvn(argvs) {
  * 命令执行入口
  */
 var AutoSignMachine_Run = (argv) => {
-  // /*
+  /*
   argv = (argv || process.argv).slice(2)
 
   let argvs = yargs(argv)
@@ -75,8 +75,8 @@ var AutoSignMachine_Run = (argv) => {
     .argv;
 
     registerEvn(argvs)
-  //*/
-  // log.dingtalk_send(new Date().toLocaleDateString())
+  // */
+  log.dingtalk_send(new Date().toLocaleDateString())
 }
 module.exports = {
   run: AutoSignMachine_Run
