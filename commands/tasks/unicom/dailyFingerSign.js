@@ -124,8 +124,8 @@ var dailyFingerSign = {
             data: params
         })
         console.log('>>minusRondGames',data)
-        return {
-            resultId: data.data?data.data.roundGame?data.data.roundGame:data.data.roundId:''
+        return { 
+            resultId: data.data.roundGame.roundId 
         }
     },
     roundGameForPrize: async (axios, options) => {
