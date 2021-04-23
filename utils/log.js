@@ -37,6 +37,7 @@ console.notify = function () {
         if (!(process.env.current_task in notify_logs)) {
             notify_logs[process.env.current_task] = []
         }
+        console.info('notify',process.env.current_task,util.format.apply(null, arguments))
         notify_logs[process.env.current_task].push(util.format.apply(null, arguments) + '\n')
     }
     stdout_task_msg(util.format.apply(null, arguments))
@@ -107,7 +108,7 @@ var notify = {
         if (desp.length) {
             let ddToken = process.env.notify_dingtalk_token
             let ddSecret = process.env.notify_dingtalk_secret
-            console.info('使用dingtalk机器人推送消息', ddToken != undefined, ddSecret != undefined)
+            console.info('使用dingtalk机器人推送消息')
             const dateNow = Date.now();
             const hmac = crypto.createHmac('sha256', ddSecret);
             hmac.update(`${dateNow}\n${ddSecret}`);
@@ -115,67 +116,8 @@ var notify = {
             await axios({
                 url: `https://oapi.dingtalk.com/robot/send?access_token=${ddToken}&timestamp=${dateNow}&sign=${result}`,
                 method: 'post',
-                data: {
-                    "msgtype": "text",
-                    "text": {
-                        content: desp
-                    },
-                }
+                data: {"msgtype": "text", "text": {content: desp}}
             }).catch(err => console.info('dingtalk_send 发送失败'))
-        }
-    },
-    tele_send: async (desp) => {
-        if (desp.length) {
-            console.log('使用tele机器人推送消息')
-            await axios({
-                url: `https://api.telegram.org/bot${process.env.notify_tele_bottoken}`,
-                method: 'post',
-                data: {
-                    "method": "sendMessage",
-                    "chat_id": process.env.notify_tele_chatid,
-                    "text": desp,
-                }
-            }).catch(err => console.log('发送失败'))
-        }
-    },
-    sct_send: async (desp) => {
-        if (desp.length) {
-            console.log('使用Server酱推送消息')
-            await axios({
-                url: `https://sctapi.ftqq.com/${process.env.notify_sctkey}.send`,
-                method: 'post',
-                params: transParams({
-                    text: 'ASM任务消息',
-                    desp
-                })
-            }).catch(err => console.log('发送失败'))
-        }
-    },
-    sc_send: async (desp) => {
-        if (desp.length) {
-            console.log('使用Server酱推送消息')
-            await axios({
-                url: `https://sc.ftqq.com/${process.env.notify_sckey}.send`,
-                method: 'post',
-                params: transParams({
-                    text: 'ASM任务消息',
-                    desp
-                })
-            }).catch(err => console.log('发送失败'))
-        }
-    },
-    pushplus_send: async (desp) => {
-        if (desp.length) {
-            console.log('使用pushplus酱推送消息')
-            await axios({
-                url: `http://pushplus.hxtrip.com/send`,
-                method: 'post',
-                data: {
-                    token: process.env.notify_pushplus_token,
-                    title: 'ASM任务消息',
-                    content: desp
-                }
-            }).catch(err => console.log('发送失败'))
         }
     },
     buildMsg: () => {
@@ -190,20 +132,8 @@ var notify = {
     sendLog: async (taskname) => {
         targetName = taskname
         console.info('sendLog', taskname)
-        if (process.env.notify_sctkey) {
-            notify.sct_send(notify.buildMsg())
-        }
-        if (process.env.notify_sckey) {
-            notify.sc_send(notify.buildMsg())
-        }
-        if (process.env.notify_tele_bottoken && process.env.notify_tele_chatid) {
-            notify.tele_send(notify.buildMsg())
-        }
         if (process.env.notify_dingtalk_token && process.env.notify_dingtalk_secret) {
-            notify.dingtalk_send(notify.buildMsg()||'无推送内容')
-        }
-        if (process.env.notify_pushplus_token) {
-            notify.pushplus_send(notify.buildMsg())
+            notify.dingtalk_send(notify.buildMsg() || '无推送内容')
         }
         notify_logs = {}
     }
