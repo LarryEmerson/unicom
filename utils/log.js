@@ -2,7 +2,7 @@ const util = require('util')
 const axios = require('axios');
 const fs = require('fs-extra');
 const crypto = require('crypto');
-let targetName=''
+let targetName = ''
 var transParams = (data) => {
     let params = new URLSearchParams();
     for (let item in data) {
@@ -41,7 +41,7 @@ console.notify = function () {
     }
     stdout_task_msg(util.format.apply(null, arguments))
 }
-console.log2=console.log
+console.log2 = console.log
 console.log = function () {
     if (process.env.asm_verbose === 'true') {
         stdout_task_msg(util.format.apply(null, arguments))
@@ -105,10 +105,9 @@ console.reward = function () {
 var notify = {
     dingtalk_send: async (desp) => {
         if (desp.length) {
-            console.log('使用dingtalk机器人推送消息')
             let ddToken = process.env.notify_dingtalk_token
             let ddSecret = process.env.notify_dingtalk_secret
-
+            console.info('使用dingtalk机器人推送消息', ddToken != undefined, ddSecret != undefined)
             const dateNow = Date.now();
             const hmac = crypto.createHmac('sha256', ddSecret);
             hmac.update(`${dateNow}\n${ddSecret}`);
@@ -122,7 +121,7 @@ var notify = {
                         content: desp
                     },
                 }
-            }).catch(err => console.log('发送失败'))
+            }).catch(err => console.info('dingtalk_send 发送失败'))
         }
     },
     tele_send: async (desp) => {
@@ -182,15 +181,15 @@ var notify = {
     buildMsg: () => {
         let msg = ''
         for (let taskName in notify_logs) {
-            let target=targetName||taskName
+            let target = targetName || taskName
             msg += `**以下为${target}任务消息**\n\n`
             msg += notify_logs[taskName].join('\n')
         }
         return msg
     },
     sendLog: async (taskname) => {
-        targetName=taskname
-        console.info('sendLog',taskname)
+        targetName = taskname
+        console.info('sendLog', taskname)
         if (process.env.notify_sctkey) {
             notify.sct_send(notify.buildMsg())
         }
@@ -201,7 +200,7 @@ var notify = {
             notify.tele_send(notify.buildMsg())
         }
         if (process.env.notify_dingtalk_token && process.env.notify_dingtalk_secret) {
-            notify.dingtalk_send(notify.buildMsg())
+            notify.dingtalk_send(notify.buildMsg()||'无推送内容')
         }
         if (process.env.notify_pushplus_token) {
             notify.pushplus_send(notify.buildMsg())
