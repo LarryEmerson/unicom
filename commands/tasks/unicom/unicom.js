@@ -17,11 +17,7 @@ var start = async (params) => {
   let taskOption = {
     init
   }
-  await scheduler.regTask('dailysignin', async (request) => {
-    await require('./dailysignin').doTask(request, options)
-    await require('./integral').addFlow(request, options)
-  }, taskOption)
-/*
+// /*
   // 每日签到积分
   await scheduler.regTask('dailysignin', async (request) => {
     await require('./dailysignin').doTask(request, options)
@@ -53,8 +49,6 @@ var start = async (params) => {
   await scheduler.regTask('dailywoTree', async (request) => {
     await require('./woTree').doTask(request, options)
   }, taskOption)
-
-
 
   // 首页-游戏-娱乐中心-每日打卡
   await scheduler.regTask('producGameSignin', async (request) => {
@@ -98,9 +92,6 @@ var start = async (params) => {
     ...taskOption,
     startTime: 22 * 3600
   })
-
-
-
   // 首页-积分商城-火热抢购-三只松鼠-看视频得积分
   await scheduler.regTask('dailyShopVideoIntegral', async (request) => {
     await require('./dailyShop').dovideoIntegralTask(request, options)
@@ -120,9 +111,7 @@ var start = async (params) => {
   await scheduler.regTask('dailyClubLottery', async (request) => {
     await require('./dailyClubLottery').doTask(request, options)
   }, taskOption)
-
-
-
+ 
   // 首页-签到-APP下载领积分
   await scheduler.regTask('dailyDownloadApp', async (request) => {
     await require('./dailyDownloadApp').doTask(request, options)
