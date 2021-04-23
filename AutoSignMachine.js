@@ -51,7 +51,7 @@ function registerEvn(argvs) {
     process.env['asm_code_dir'] = process.env.FC_FUNC_CODE_PATH.replace(/[\/|\\]$/gi, "") + '/'
     process.env['asm_save_data_dir'] = path.join('/tmp', '.AutoSignMachine')
   } else {
-    process.env['asm_func'] = 'false'
+    process.env['asm_func'] = 'true'
     process.env['asm_code_dir'] = ''
     process.env['asm_save_data_dir'] = path.join(os.homedir(), '.AutoSignMachine')
   }

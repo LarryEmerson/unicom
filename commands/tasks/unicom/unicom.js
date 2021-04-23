@@ -17,7 +17,7 @@ var start = async (params) => {
   let taskOption = {
     init
   }
-
+/*
   // 每日签到积分
   await scheduler.regTask('dailysignin', async (request) => {
     await require('./dailysignin').doTask(request, options)
@@ -136,9 +136,9 @@ var start = async (params) => {
     startTime: 21.5 * 3600,
     ignoreRelay: true
   })
-
+//*/
   // 每日0点自动兑换流量
- 
+
 //  await scheduler.regTask('exchangeDFlow', async (request) => {
 //   await require('./exchangeDFlow').doTask(request, options)
 //  }, {
@@ -146,16 +146,16 @@ var start = async (params) => {
 //    startTime: 0,
 //    startHours: 0,
 //    ignoreRelay: true
-//  }) 
+//  })
 
   // 定时检测流量兑换
   // 可使用 --exchangeDFlowCircle-intervalTime 1800 选项指定流量检查间隔时间，单位秒
   // 可使用 --exchangeDFlowCircle-minFlow 200 选项指定流量检查最小值
   // 可使用 --exchangeDFlowCircle-productId 21010621565413402 选项指定兑换流量包ID
- 
+
   //      let { 'exchangeDFlowCircle-productId': productId = 'ff80808166c5ee6701676ce21fd14716' } = options
 
- 
+
   // 每日奖励信息结果推送
   if (!('asm_func' in process.env) || process.env.asm_func === 'false') {
     await scheduler.regTask('dailyNotifyReward', async (request) => {

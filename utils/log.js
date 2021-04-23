@@ -190,6 +190,7 @@ var notify = {
     },
     sendLog: async (taskname) => {
         targetName=taskname
+        console.info('sendLog',taskname)
         if (process.env.notify_sctkey) {
             notify.sct_send(notify.buildMsg())
         }
