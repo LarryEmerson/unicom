@@ -17,6 +17,10 @@ var start = async (params) => {
   let taskOption = {
     init
   }
+  await scheduler.regTask('dailysignin', async (request) => {
+    await require('./dailysignin').doTask(request, options)
+    await require('./integral').addFlow(request, options)
+  }, taskOption)
 /*
   // 每日签到积分
   await scheduler.regTask('dailysignin', async (request) => {
